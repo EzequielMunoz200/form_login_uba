@@ -22,4 +22,6 @@ class CoreController
         require_once __DIR__.'/../views/'.$viewName.'.html.php';
         require_once __DIR__.'/../views/layout/footer.html.php';
     }
+
+    
 }

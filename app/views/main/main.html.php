@@ -1,3 +1,5 @@
+<?= $message ?>
+
 <div class="title">
     <h1>Inscription</h1>
     <h2>C'est gratuit (et ça le restera toujours)</h2>

@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validation;
+
 
 
 class MainController extends CoreController
@@ -17,4 +20,72 @@ class MainController extends CoreController
         );
     }
 
+    public function register()
+    {
+        //var_dump($_POST);
+        if (!empty($_POST)) {
+            $validator = Validation::createValidator();
+            $input = [
+
+                'firstname' => $_POST['firstname'],
+                'lastname' => $_POST['lastname'],
+
+                'email' => $_POST['email'],
+                'emailConfirmation' => $_POST['email-confirmation'],
+                'password' => $_POST['password'],
+                'dob' => $_POST['dob'],
+                'gender' => $_POST['gender'],
+            ];
+
+
+            $constraint = new Assert\Collection([
+                // the keys correspond to the keys in the input array
+                'firstname' => new Assert\Length(['min' => 3]),
+                'lastname' => new Assert\Length(['min' => 3]),
+                'email' => [
+                    new Assert\Email(),
+                    /*  new Assert\Regex([
+                        'pattern' => '/^
+                                    (?:(?:\+|00)33|0)    
+                                    \s*[1-9]         
+                                    (?:[\s.-]*\d{2}){4}
+                                    ',
+                    ]), */
+                ],
+                'emailConfirmation' => [
+                    new Assert\Email(),
+                    new Assert\IdenticalTo($_POST['email'])
+                ],
+                'password' => new Assert\Length(['min' => 6]),
+                'dob' => new Assert\LessThan('today'),
+                'gender' => new Assert\NotBlank(),
+            ]);
+
+
+            $violations = $validator->validate($input, $constraint);
+            //form is not valid
+            if (0 !== count($violations)) {
+                // there are errors, now you can show them
+                foreach ($violations as $violation) {
+                    $errors[] =  $violation->getMessage();
+                }
+
+                $this->render(
+                    'main/register',
+                    [
+                        'message' => $errors
+                    ]
+                );
+            } else {  //form is valid 
+
+
+                $this->render(
+                    'main/register',
+                    [
+                        'message' => 'ok'
+                    ]
+                );
+            }
+        }
+    }
 }
