@@ -1,0 +1,90 @@
+body {
+    background: rgb(224, 227, 237);
+    background: linear-gradient(0deg, rgba(224, 227, 237, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+nav {
+    background-color: #425D91;
+    height: 80px;
+}
+
+h1{
+    font-size: 1.7em;
+}
+
+h2{
+    font-size: 1rem;
+}
+.gender {
+    display: flex;
+    align-items: center;
+
+}
+
+
+.gender input {
+    width: 12px;
+    height: 60px;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+
+.gender label {
+    margin-left: 7px;
+}
+
+.cgu {
+    font-size: x-small;
+}
+
+#btn-register {
+    background: rgb(91, 121, 70);
+    background: linear-gradient(0deg, rgba(91, 121, 70, 1) 0%, rgba(145, 187, 116, 1) 100%);
+    border: none;
+    border-radius: 3px;
+    padding: 8px 40px;
+    font-weight: bold;
+    color: white;
+    font-size: large;
+    text-shadow: 1px 1px 2px black;
+
+}
+
+
+#form-login {
+    font-size: small;
+    font-weight: bold;
+    vertical-align: middle;
+    display: flex;
+    align-items: flex-end;
+}
+
+#form-login input{
+    height: 17px;
+}
+
+#form-login label{
+    font-size: 8px;
+    
+}
+
+#btn-login{
+    font-size: 10px;
+    line-height: 6px;
+    color: white;
+    font-weight: bold;
+    background-color: #4A6BAB;
+    border: none;
+    
+}
+
+
+.note-date{
+    font-size: xx-small;
+    position: relative;
+    top: 9px;
+    left: -46px;
+}

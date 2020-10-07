@@ -14,7 +14,7 @@ class MainController extends CoreController
         $this->render(
             'main/main',
             [
-               //vars
+                //vars
             ]
         );
     }
@@ -93,5 +93,9 @@ class MainController extends CoreController
                 }
             }
         }
+    }
+
+    public function login()
+    {
     }
 }
