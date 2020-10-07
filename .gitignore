@@ -1,3 +1,5 @@
+# Composer
 vendor
-app/config.ini
 
+# config
+app/config.ini
