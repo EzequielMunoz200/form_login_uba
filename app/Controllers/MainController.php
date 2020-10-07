@@ -2,20 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\User;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validation;
-
 
 
 class MainController extends CoreController
 {
     public function main()
     {
-
         $this->render(
             'main/main',
             [
-                'message' => 'hello world'
+               //vars
             ]
         );
     }
@@ -78,13 +77,20 @@ class MainController extends CoreController
                 );
             } else {  //form is valid 
 
+                //hydrat User
+                $user = new User();
+                $user->setFirstname($_POST['firstname']);
+                $user->setLastname($_POST['lastname']);
+                $user->setEmail($_POST['email']);
+                $user->setPassword(password_hash($_POST['password'], PASSWORD_DEFAULT));
+                $user->setdob($_POST['dob']);
+                $user->setGender($_POST['gender']);
 
-                $this->render(
-                    'main/register',
-                    [
-                        'message' => 'ok'
-                    ]
-                );
+                //redirect
+                if ($user->insert()) {
+                    header("Location: {$_SERVER['BASE_URI']}");
+                    die();
+                }
             }
         }
     }
