@@ -23,5 +23,13 @@ class CoreController
         require_once __DIR__.'/../views/layout/footer.html.php';
     }
 
-    
+    public function redirectToRoute($route)
+    {
+         //redirection
+         global $router;
+         header("Location: " . $router->generate($route));
+         die();
+    }
+
+
 }

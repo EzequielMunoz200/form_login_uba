@@ -12,23 +12,25 @@
 
 <body>
     <nav class="nav justify-content-end mb-5">
-        <form id="form-login" class="form-inline pb-2" action="<?= $router->generate('login') ?>" method="POST">
+        <form id="form-login" class="pb-2" action="<?= $router->generate('login') ?>" method="POST" novalidate='novalidate'>
 
             <div class="form-group col-4 px-2 ml-2 py-0">
+
                 <label class="text-light" for="login-email">Adresse e-mail ou mobile
-                    <input class="form-control rounded-0" type="email" name="login-email" id="login-email">
                 </label>
+                <input class="form-control rounded-0 validateEmail" type="email" name="login-email" id="login-email">
+
+
             </div>
 
             <div class="form-group col-4 px-2 py-0 m-1">
                 <label class="text-light" for="login-password">Mot de passe
-                    <input class="form-control rounded-0" type="password" name="login-password" id="login-password">
-                    <small>Informations de compte oubliées ?</small>
                 </label>
+                <input class="form-control rounded-0" type="password" name="login-password" id="login-password">
             </div>
 
             <div class="form-group col-3 px-2 py-0 ">
-                <input class="form-control rounded-0 shadow-lg mb-2" type="submit" name="login-password" id="btn-login" value="Connexion">
+                <input class="form-control rounded-0 shadow-lg mb-2" type="submit" id="btn-login" value="Connexion">
                 </label>
             </div>
 
@@ -36,3 +38,11 @@
         </form>
 
     </nav>
+    <?php
+    if (!empty($_SESSION['error-login'])) :
+    ?>
+        <div class="alert alert-danger"><?= $_SESSION['error-login'] ?></div>
+    <?php
+        unset($_SESSION['error-login']);
+    endif;
+    ?>

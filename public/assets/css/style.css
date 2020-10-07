@@ -57,13 +57,13 @@ h2{
 #form-login {
     font-size: small;
     font-weight: bold;
-    vertical-align: middle;
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
 }
 
 #form-login input{
     height: 17px;
+ 
 }
 
 #form-login label{
@@ -78,8 +78,10 @@ h2{
     font-weight: bold;
     background-color: #4A6BAB;
     border: none;
-    
+    position: relative;
+    top: 24px;
 }
+    
 
 
 .note-date{
@@ -87,4 +89,14 @@ h2{
     position: relative;
     top: 9px;
     left: -46px;
+}
+
+
+input.valid {
+    outline-color: dodgerblue;
+    border-color: dodgerblue;
+}
+input.invalid {
+    outline-color: rgb(189, 116, 116);
+    border-color: rgb(189, 116, 116);
 }

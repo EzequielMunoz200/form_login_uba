@@ -1,5 +1,5 @@
 
-<?php echo $message ;
+<?php 
 
 
 if(!empty($message))

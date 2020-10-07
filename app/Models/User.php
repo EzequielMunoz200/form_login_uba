@@ -225,4 +225,27 @@ class User
 
         return false;
     }
+
+    public static function find($email)
+    {
+       
+        $pdo = Database::getPDO();
+
+        
+        $sql = 'SELECT * FROM `user` WHERE `email` = :email';
+
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->execute([":email" => $email]);
+
+
+        $user = $pdoStatement->fetchObject('App\Models\User');
+
+        // retourner le résultat
+        return $user;
+    }
+
+
+
 }

@@ -97,5 +97,60 @@ class MainController extends CoreController
 
     public function login()
     {
+
+        if (!empty($_POST)) {
+            $validator = Validation::createValidator();
+            $input = [
+
+                'email' => $_POST['login-email'],
+                'password' => $_POST['login-password'],
+            ];
+
+
+            $constraint = new Assert\Collection([
+                // the keys correspond to the keys in the input array
+                'email' => [
+                    new Assert\Email(),
+                    /*  new Assert\Regex([
+                        'pattern' => '/^
+                                    (?:(?:\+|00)33|0)    
+                                    \s*[1-9]         
+                                    (?:[\s.-]*\d{2}){4}
+                                    ',
+                    ]), */
+                ],
+                'password' => new Assert\Length(['min' => 6])
+            ]);
+
+
+            $violations = $validator->validate($input, $constraint);
+            //form is not valid
+            if (0 !== count($violations)) {
+                // there are errors, now you can show them
+                foreach ($violations as $violation) {
+                    $errors[] =  $violation->getMessage();
+                }
+
+                $_SESSION['error-login'] = 'Identifients invalides !';
+                return $this->redirectToRoute("main");
+            } else {  //form is valid 
+
+                $user = User::find($_POST['login-email']);
+                //redirect
+                if ($user && password_verify($_POST['login-password'], $user->getPassword())) {
+                    return $this->redirectToRoute("home");
+                }
+                $_SESSION['error-login'] = 'Identifients invalides !';
+                return $this->redirectToRoute("main");
+            }
+        }
+    }
+
+    public function home()
+    {
+        $this->render(
+            'main/home',
+            []
+        );
     }
 }

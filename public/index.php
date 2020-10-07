@@ -2,6 +2,8 @@
 
 require_once '../vendor/autoload.php';
 
+session_start();
+
 $router = new AltoRouter();
 
 
@@ -16,7 +18,11 @@ else
 
 $router->map('GET', '/', ['controller' => 'MainController',  'method' => 'main'], 'main');
 
-$router->map('GET|POST', '/register', ['controller' => 'MainController',  'method' => 'register'], 'register');
+$router->map('POST', '/register', ['controller' => 'MainController',  'method' => 'register'], 'register');
+
+$router->map('POST', '/login', ['controller' => 'MainController',  'method' => 'login'], 'login');
+
+$router->map('GET', '/home', ['controller' => 'MainController',  'method' => 'home'], 'home');
 
 $match = $router->match();
 
