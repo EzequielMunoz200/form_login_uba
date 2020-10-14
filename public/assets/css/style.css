@@ -2,6 +2,7 @@ body {
     background: rgb(224, 227, 237);
     background: linear-gradient(0deg, rgba(224, 227, 237, 1) 0%, rgba(255, 255, 255, 1) 100%);
     font-family: sans-serif;
+    min-height: 100vh;
 }
 
 nav {
@@ -9,13 +10,14 @@ nav {
     height: 80px;
 }
 
-h1{
+h1 {
     font-size: 1.7em;
 }
 
-h2{
+h2 {
     font-size: 1rem;
 }
+
 .gender {
     display: flex;
     align-items: center;
@@ -25,7 +27,7 @@ h2{
 
 .gender input {
     width: 12px;
-    height: 60px;
+    height: 14px;
     vertical-align: middle;
     margin-left: 15px;
 }
@@ -58,40 +60,122 @@ h2{
     font-weight: bold;
     display: flex;
     align-items: baseline;
+    max-width: 100%;
 }
 
-#form-login input{
-    height: 17px;
- 
+#form-login .form-group{
+    margin: auto;
 }
 
-#form-login label{
+#form-login input {
+    height: 27px;
+
+}
+
+#form-login label {
     font-size: 8px;
-    
+    margin-bottom: 0;
+    width: 122px;
+
 }
 
-#btn-login{
+#btn-login {
     font-size: 10px;
     line-height: 6px;
     color: white;
     font-weight: bold;
     background-color: #4A6BAB;
     border: none;
-    position: relative;
-    top: 24px;
+    margin-top: 18px;
+    text-align: center;
+   /*  position: relative;
+    top: 24px; */
 }
-    
 
 
-.note-date{
+
+.note-date {
     font-size: xx-small;
     position: relative;
-    top: 9px;
-    left: -46px;
+    top: 14px;
+    left: -14px;
+}
+
+#dob {
+    font-size: 10px;
+    padding: 0;
+    padding-left: 5px;
+
+}
+
+[data-valid="false"] {
+    outline-color: rgb(189, 116, 116) !important;
+    border-color: rgb(189, 116, 116) !important;
+}
+
+.error {
+    outline: thin solid red !important;
+    box-shadow: 0 0 0 0.2rem rgba(240, 52, 52, .2) !important;
+}
+
+.isValid {
+    outline: thin solid rgb(98, 214, 118) !important;
+    box-shadow: 0 0 0 0.2rem rgba(52, 240, 68, 0.2) !important;
 }
 
 
-[data-valid="false"] {
-    outline-color: rgb(189, 116, 116)!important;
-    border-color: rgb(189, 116, 116)!important;
+
+.fa-check-circle {
+    position: absolute;
+    top: 10px;
+    right: 26px;
+    color:  rgb(98, 214, 118);
+}
+
+.fa-exclamation-circle{
+    position: absolute;
+    top: 10px;
+    right: 26px;
+    color:  red;
+}
+
+.date .fa-check-circle {
+    position: absolute;
+    top: 11px;
+    left: 142px;
+    color:  rgb(98, 214, 118);
+}
+
+.date .fa-exclamation-circle{
+    position: absolute;
+    top: 11px;
+    left: 142px;
+    color:  red;
+}
+
+
+.alert{
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    border-radius: 0;
+    height: 46px;
+}
+
+input{
+    font-size: 15px!important;
+}
+
+
+#help-message {
+    font-size: 66%;
+}
+
+
+#pass-forgotten{
+    position: absolute;
+    top: 49px;
+    color: white;
+    font-size: 7px;
+    min-width: 125px;
 }

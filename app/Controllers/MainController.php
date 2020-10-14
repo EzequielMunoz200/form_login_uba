@@ -28,7 +28,6 @@ class MainController extends CoreController
 
                 'firstname' => $_POST['firstname'],
                 'lastname' => $_POST['lastname'],
-
                 'email' => $_POST['email'],
                 'emailConfirmation' => $_POST['email-confirmation'],
                 'password' => $_POST['password'],
@@ -77,7 +76,7 @@ class MainController extends CoreController
                 );
             } else {  //form is valid 
 
-                //hydrat User
+                //hydrating User
                 $user = new User();
                 $user->setFirstname($_POST['firstname']);
                 $user->setLastname($_POST['lastname']);
@@ -112,10 +111,7 @@ class MainController extends CoreController
                 'email' => [
                     new Assert\Email(),
                     /*  new Assert\Regex([
-                        'pattern' => '/^
-                                    (?:(?:\+|00)33|0)    
-                                    \s*[1-9]         
-                                    (?:[\s.-]*\d{2}){4}
+                        'pattern' => '/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/
                                     ',
                     ]), */
                 ],
